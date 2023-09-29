@@ -2,15 +2,13 @@
 package docup;
 
 import Ventanas.Frame;
-import Ventanas.Formulario;
+import Ventanas.ComponentesBasicos;
 
 public class Main {
 
     public static void main(String[] args) {
         //Iniciar app
-        Frame frame = new Frame();
-        Formulario panelPrincipal = new Formulario();
-        frame.setContentPane(panelPrincipal);
+        Frame frame = new Frame();        
         frame.setVisible(true);
     }
     
