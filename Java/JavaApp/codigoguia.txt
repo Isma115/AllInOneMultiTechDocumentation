@@ -1,0 +1,56 @@
+ComboBox---
+
+Crear combobox:
+JComboBox combo1=new JComboBox<String>();
+
+Añadir al combobox
+combo1.addItem("rojo");
+
+
+---JOptionPane---
+
+Como mostrar un cuadro de dialogo:
+
+//dialogo componente, titulo, mensaje, tipo de mensaje
+JOptionPane.showMessageDialog(new JDialog(), "Titulo", "Mensaje", JOptionPane.INFORMATION_MESSAGE); 
+
+
+---CambiarTema---
+
+try {
+   UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+} catch (Exception e) {
+   e.printStackTrace();
+} 
+
+
+//instalando previamente con el .jar de FlatLaf
+try {
+    UIManager.setLookAndFeel( new FlatLightLaf() );
+} catch( Exception ex ) {
+    System.err.println( "Failed to initialize LaF" );
+}
+
+
+---BBDD---
+
+Preparamos ruta con la BBDD
+
+Hay que crear el fichero antes
+"jdbc:sqlite:sample.db"
+
+Instalamos el sqlitejdbc
+
+//Iniciamos conexion:
+String url = "jdbc:sqlite:ejemplo.db";
+Class.forName("org.sqlite.JDBC");
+conexion = DriverManager.getConnection(url);
+
+---SentenciaSelect---
+
+prepared = c.prepareStatement("SELECT * FROM USERS WHERE department = ?;");
+prepared.setString(1, targetID);
+ResultSet rs = prepared.executeQuery();
+        
+
+

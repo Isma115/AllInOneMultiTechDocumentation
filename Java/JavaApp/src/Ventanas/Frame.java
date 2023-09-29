@@ -1,21 +1,32 @@
 
 package Ventanas;
 
+import Codigos.CargadorCodigos;
+import UtilsApp.PopUps;
+import java.util.Map;
 import javax.swing.JPanel;
 
 public class Frame extends javax.swing.JFrame {
 
+    public int tema = 0;
     private Formulario formu;
     private ComponentesAvanzados cav;
     private ComponentesBasicos panelPrincipal;
     private BBDD bbdd;
+    private CargadorCodigos cargadorCodigos;
+    private Map<String, String> codigos;
+    private PopUps popUps;
     
     public Frame() {
         initComponents();
-        formu = new Formulario();
-        cav = new ComponentesAvanzados();
-        panelPrincipal = new ComponentesBasicos();
-        bbdd = new BBDD();
+        cargadorCodigos = new CargadorCodigos();
+        codigos = cargadorCodigos.cargar();
+        popUps = new PopUps();
+        formu = new Formulario(this);
+        cav = new ComponentesAvanzados(this);
+        panelPrincipal = new ComponentesBasicos(this);
+        bbdd = new BBDD(this);
+        
         setContentPane(panelPrincipal);
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -114,5 +125,12 @@ public class Frame extends javax.swing.JFrame {
         setContentPane(panel);
         revalidate();
         repaint();
+    }
+    
+    public String getCodigo(String clave){
+        return codigos.get(clave);
+    }
+    public PopUps getPopUps(){
+        return popUps;
     }
 }
